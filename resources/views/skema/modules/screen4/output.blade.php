@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="mt-3">
-    <a href="/listbank" class="text-decoration-none">
+    <a href="/count" class="text-decoration-none">
         <i class="bi bi-arrow-left"></i>
         <span>Kembali</span>
     </a>
@@ -27,7 +27,7 @@
 </div> --}}
 
 
-            <div class="row" style="margin-top: 80px">
+            <div class="row" style="margin-top: 10px">
                 <div class="col-sm-6 mb-3 mb-sm-0">
                 <div class="card">
                     <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
@@ -40,6 +40,15 @@
                                 <div class="input-group mb-3">
                                 <input type="text" class="form-control" value="{{ number_format($pokok_pinjaman, 0, ',', '.') }}" id="PokokPinjaman" readonly>
                                 <span class="input-group-text">IDR</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mb-3 row">
+                            <label for="namabank" class="col-sm-3 col-form-label">Nama Bank</label>
+                            <div class="col-sm-9">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" value=" {{ $nama_bank }}" id="namabank" readonly>
                                 </div>
                             </div>
                         </div>
@@ -83,16 +92,6 @@
                                         <span class="input-group-text">IDR</span>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div class="mb-3 row">
-                            <label for="namabank" class="col-sm-3 col-form-label">Nama Bank</label>
-                            <div class="col-sm-9">
-                                <div class="input-group mb-3">
-                                    <input type="text" class="form-control" value=" {{ $nama_bank }}" id="namabank" readonly>
-                                    {{-- <span class="input-group-text">IDR</span> --}}
-                                </div>
-                            </div>
                             </div>
 
                             <div class="mb-3 row">

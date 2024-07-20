@@ -23,13 +23,7 @@ class BanksController extends Controller
         ]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+
 
     /**
      * Store a newly created resource in storage.
@@ -37,14 +31,23 @@ class BanksController extends Controller
     public function store(Request $request)
     {
         $validateData = $request->validate([
-            "nama_bank" => "required|max:15",
+            "nama_bank" => "required|max:15|regex:/^[a-zA-Z]+$/",
             "presentase_bunga" => "required|numeric"
         ]);
 
+        $bankYangAda = banks::where('nama_bank', $request->nama_bank)
+        // ->where('nama_bank', $request->nama_bank)
+        ->first();
+
+        if ($bankYangAda) {
+            // bank sudah ada, kembalikan pesan yang sesuai
+            return redirect('/createBank')->with('warning', "Nama Bank sudah ada untuk Bank yang dipilih.");
+        } else {
 
         banks::create($validateData);
 
         return redirect('/listbank')->with('success',"Data sukses disimpan");
+    }
     }
 
     public function getDataByID(banks $banks) {
@@ -54,13 +57,7 @@ class BanksController extends Controller
     }
 
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(banks $banks)
-    {
-        //
-    }
+
 
     /**
      * Show the form for editing the specified resource.
@@ -77,8 +74,8 @@ class BanksController extends Controller
      */
     public function update(Request $request, banks $banks){
         $validateData = $request->validate([
-            "nama_bank" => "required|max:15",
-            "presentase_bunga" => "numeric",
+            "nama_bank" => "required|max:15|regex:/^[a-zA-Z]+$/|unique:banks,nama_bank",
+            "presentase_bunga" => "required|numeric"
         ]);
 
         $banks->where("id", $banks->id)->update($validateData) ;
@@ -107,7 +104,7 @@ class BanksController extends Controller
         ]);
     }
 
-        // Ubah fungsi getBanks() untuk mengambil data bank berdasarkan id yang dipilih dari dropdown.
+    // Ubah fungsi getBanks() untuk mengambil data bank berdasarkan id yang dipilih dari dropdown.
     // Dengan menggunakan findOrFail($id), kita mendapatkan bank berdasarkan id yang dipilih dan kemudian mengembalikan nilai presentase_bunga dalam format JSON.
     public function getBanks($id){
         $bank = banks::findOrFail($id);

@@ -13,11 +13,16 @@
 
 <body>
     <nav class="navbar" style="background-color: #672968;">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1, text-white">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <span class="navbar-brand mb-0 h1 text-white">
                 <h3 style="display: inline-block; margin-right: 10px;">Simulasi Kredit</h3>
-                <a class="navbar-brand text-white" href="/login" style="text-decoration: none;">Masuk</a>
+                <a class="navbar-brand text-white" href="/">Kembali</a>
             </span>
+            <div>
+                <a class="navbar-brand text-white" href="/login" style="text-decoration: none;">
+                    <i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -39,8 +44,13 @@
                             </div>
                         </div>
 
-                        <div>
-                            <p>aku</p>
+                        <div class="mb-3 row">
+                            <label for="namabank" class="col-sm-3 col-form-label">Nama Bank</label>
+                            <div class="col-sm-9">
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control" value=" {{ $nama_bank }}" id="namabank" readonly>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-3 row">

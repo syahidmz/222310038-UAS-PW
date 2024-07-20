@@ -3,7 +3,7 @@
 @section('main-content')
 
 <div class="mt-3">
-    <a href="/listbank" class="text-decoration-none">
+    <a href="/home" class="text-decoration-none">
         <i class="bi bi-arrow-left"></i>
         <span>Kembali</span>
     </a>
@@ -12,9 +12,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="margin-top: 80px">
+            <div class="card" style="margin-top: 10px">
                 <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
-                    Daftar jangka waktu
+                    Lakukan Perhitungan
                 </div>
                 <div class="card-body text-center" style="margin: 100px">
 
@@ -23,14 +23,14 @@
                         <div class="row mb-3" style="margin-top: 5px">
                             <label for="pokokpinjaman" class="col-sm-4 col-form-label">Pokok Pinjaman</label>
                             <div class="col-sm-4">
-                                <input type="number" class="form-control" name="pokokpinjaman" id="pokokpinjaman" style="max-width: 150px;">
+                                <input type="number" class="form-control" name="pokokpinjaman" id="pokokpinjaman" style="max-width: 150px;" required>
                             </div>
                         </div>
 
                         <div class="row mb-3" style="margin-top: 30px">
                             <label for="hitungnamabank" class="col-sm-4 col-form-label">Pilih Bank</label>
                             <div class="col-sm-8">
-                                <select id="hitungnamabank" name="hitungnamabank" class="form-select" style="max-width: 150px;">
+                                <select id="hitungnamabank" name="hitungnamabank" class="form-select" style="max-width: 150px;" required>
                                     <option value="">~Pilih~</option>
                                     @foreach ($data as $banks)
                                         <option value="{{ $banks->id }}">{{ $banks->nama_bank }}</option>
@@ -42,17 +42,17 @@
                         <div class="row mb-3" style="margin-top: 30px">
                             <label for="hitungjumlahbunga" class="col-sm-4 col-form-label">Jumlah Bunga</label>
                             <div class="col-sm-8">
-                                <input type="text" id="hitungjumlahbunga" name="hitungjumlahbunga" class="form-control" >
+                                <input type="text" id="hitungjumlahbunga" name="hitungjumlahbunga" class="form-control" style="max-width: 150px;" readonly required >
                             </div>
                         </div>
 
                         <div class="row mb-3" style="margin-top: 30px">
                             <label for="pilihjangkawaktu" class="col-sm-4 col-form-label">Jangka Waktu</label>
                             <div class="col-sm-8">
-                                <select id="pilihjangkawaktu" name="pilihjangkawaktu" class="form-select" style="max-width: 150px;">
+                                <select id="pilihjangkawaktu" name="pilihjangkawaktu" class="form-select" style="max-width: 150px;" required>
                                     <option value="">~Pilih~</option>
                                 </select>
-                                <input type="hidden" id="jangkawaktu_id" name="jangkawaktu_id">
+                                {{-- <input type="hidden" id="jangkawaktu_id" name="jangkawaktu_id"> --}}
                             </div>
                         </div>
 

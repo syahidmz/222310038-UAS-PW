@@ -37,19 +37,29 @@ class JangkaWaktusController extends Controller
      * Store a newly created resource in storage.
      */
     public function store(Request $request)
-    {
-        $validateData = $request->validate([
-            "id_bank" => "required|numeric",
-            // "batas_awal" => "required|numeric",
-            // "batas_akhir" => "required|numeric",
-            "rentang_waktu" => "required|numeric"
-        ]);
+{
+    // Validasi data input dari formulir
+    $validateData = $request->validate([
+        "id_bank" => "required|numeric",
+        "rentang_waktu" => "required|numeric"
+    ]);
 
+    // Memeriksa apakah durasi sudah ada untuk bank yang dipilih
+    $durasiYangAda = JangkaWaktus::where('id_bank', $request->id_bank)
+        ->where('rentang_waktu', $request->rentang_waktu)
+        ->first();
 
-           JangkaWaktus::create($validateData);
+    if ($durasiYangAda) {
+        // Durasi sudah ada, kembalikan pesan yang sesuai
+        return redirect('/home')->with('warning', "Jangka waktu sudah ada untuk bank yang dipilih.");
+    } else {
+        // Durasi belum ada, buat record baru
+        JangkaWaktus::create($validateData);
 
-           return redirect('/home')->with('success',"Data sukses disimpan");
+        return redirect('/home')->with('success', "Data sukses disimpan.");
     }
+}
+
 
     public function getDataByID(JangkaWaktus $JangkaWaktus) {
         return view('skema.modules.screen2.show_data_bank', [
@@ -84,9 +94,10 @@ class JangkaWaktusController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(JangkaWaktus $jangkaWaktus)
-    {
-        //
+    public function destroy(JangkaWaktus $JangkaWaktus) {
+        $JangkaWaktus->delete($JangkaWaktus->id);
+
+        return redirect('/listJangkaWaktu')->with('success',"Data sukses dihapus");
     }
 
     public function getJangkaWaktu($id)

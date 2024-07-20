@@ -12,9 +12,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="margin-top: 80px">
+            <div class="card" style="margin-top: 10px">
                 <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
-                    Kredit Bunga Flat
+                    Informasi Bank
                 </div>
                 <div class="card-body text-center" style="margin: 100px">
 

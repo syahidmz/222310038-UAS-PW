@@ -28,6 +28,7 @@ Route::post('/update/{banks}/edit', [banksController::class, 'update']);
 
 
 Route::post('/store2',[JangkaWaktusController::class, 'store']);
+Route::get('/deleteJW/{JangkaWaktus}', [JangkaWaktusController::class, 'destroy']);
 Route::get('/listJangkaWaktu',[JangkaWaktusController::class, 'index']);
 
 

@@ -2,12 +2,19 @@
 
 @section('main-content')
 
+<div class="mt-3">
+    <a href="/home" class="text-decoration-none">
+        <i class="bi bi-arrow-left"></i>
+        <span>Kembali</span>
+    </a>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card" style="margin-top: 80px">
+            <div class="card" style="margin-top: 10px">
                 <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
-                    {{-- {{ $data->namaSkema }} --}}Ubah Daftar Bank
+                    {{-- {{ $data->namaSkema }} --}}Daftar Bank
                 </div>
                 <div class="card-body">
                     <div>
@@ -17,7 +24,7 @@
                             <tr>
                                 <th>No</th>
                                 <th>Nama Bank</th>
-                                <th>Bunga(%)</th>
+                                {{-- <th>Bunga(%)</th> --}}
                                 <th> </th>
                             </tr>
                         </thead>
@@ -26,7 +33,7 @@
                             <tr>
                                 <th>{{ $loop->index + 1 }}</th>
                                 <td>{{ $banks->nama_bank }}</td>
-                                <td>{{ $banks->presentase_bunga }}</td>
+                                {{-- <td>{{ $banks->presentase_bunga }}</td> --}}
                                 {{-- <td>{{ $banks->idnamaskema->namaSkema}}</td> --}}
                                 <td>
                                     <div class="btn-group btn-group-sm" role="group">
@@ -59,6 +66,7 @@
                             <button type="submit"  class="btn btn-primary">Tambah Bank</button>
                         </div>
                     </a>
+
                     <br>
                     @if (session()->has('success'))
                     <div class="alert alert-success" role="alert">

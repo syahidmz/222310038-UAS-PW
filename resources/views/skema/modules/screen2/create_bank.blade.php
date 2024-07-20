@@ -12,9 +12,9 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
-            <div class="card">
+            <div class="card" style="margin-top: 10px">
                 <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
-                    Tambah Bank Kredit Bunga Flat
+                    Tambah Bank
                 </div>
                 <div class="card-body text-center" style="margin: 100px">
                     <form action="/store" method="POST">
@@ -39,6 +39,12 @@
                             <button type="submit" class="btn btn-primary">Tambah</button>
                         </div>
                     </form>
+
+                @if (session()->has('warning'))
+                <div class="alert alert-warning" role="alert">
+                {{ session('warning') }}
+                </div>
+                @endif
                 </div>
             </div>
         </div>

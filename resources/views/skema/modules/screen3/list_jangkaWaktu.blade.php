@@ -5,7 +5,7 @@
 @section('main-content')
 
 <div class="mt-3">
-    <a href="/listbank" class="text-decoration-none">
+    <a href="/home" class="text-decoration-none">
         <i class="bi bi-arrow-left"></i>
         <span>Kembali</span>
     </a>
@@ -21,17 +21,16 @@
                 <div class="card-body text-center" style="margin: 100px">
                     <div class="table-responsive">
                         <table class="table table-striped">
-                          <thead>
+                        <thead>
                             <tr>
-                              <th scope="col">No</th>
-                              <th scope="col">Nama Bank</th> <!-- Tambahkan kolom Nama Bank -->
-                              <th scope="col">Bunga</th>
-                              {{-- <th scope="col">Mulai dari</th>
-                              <th scope="col">Sampai dengan</th> --}}
-                              <th scope="col">Jangka Waktu</th>
+                            <th scope="col">No</th>
+                            <th scope="col">Nama Bank</th> <!-- Tambahkan kolom Nama Bank -->
+                            <th scope="col">Bunga</th>
+                            <th scope="col">Jangka Waktu</th>
+                            <th> </th>
                             </tr>
-                          </thead>
-                          <tbody>
+                        </thead>
+                        <tbody>
                             @foreach ($data as $jangka_waktus)
                             <tr>
                                 <th>{{ $loop->index + 1 }}</th>
@@ -40,12 +39,23 @@
                                 {{-- <td>{{ $jangka_waktus->batas_awal }}</td>
                                 <td>{{ $jangka_waktus->batas_akhir }}</td> --}}
                                 <td>{{ $jangka_waktus->rentang_waktu }}</td>
+                                <td><a href="/deleteJW/{{ $jangka_waktus->id }}">
+                                    <button type="button" class="btn btn-danger btn-sm">
+                                        {{-- onclick="return confirm('Apakah data tersebut mau dihapus?')"> --}}
+                                        <i class="bi bi-trash-fill"></i>
+                                    </button>
+                                    </a>
+                            </td>
                             </tr>
                             @endforeach
-                          </tbody>
+                        </tbody>
                         </table>
-                      </div>
-
+                    </div>
+                    @if (session()->has('success'))
+                    <div class="alert alert-success" role="alert">
+                    {{ session('success') }}
+                    </div>
+                    @endif
                 </div>
             </div>
         </div>

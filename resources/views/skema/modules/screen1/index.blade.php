@@ -5,20 +5,11 @@
     <div class="col-lg-8">
         <div class="card">
             <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white">
-                Tambah Skema
+                Tambah Jangka Waktu
             </div>
             <div class="card-body">
                 <form class="row g-3" action="/store2" method="POST" >
                     @csrf
-
-                    {{-- <div>
-                        <label for="pilihnamabank" class="col-sm-2 col-form-label">Pilih nama bank</label style="margin-left: 100px">
-                            <select id="pilihnamabank" name="id_bank" style="margin-left: 100px">
-                            @foreach ($data as $banks)
-                            <option value="{{$banks->id}}">{{$banks->nama_bank}} </option>
-                            @endforeach
-                            </select>
-                    </div> --}}
 
                     <div class="row mb-3" style="margin-top: 30px">
                         <label for="pilihnamabank" class="col-sm-4 col-form-label">Pilih nama bank</label>
@@ -41,10 +32,10 @@
 
 
                     <div class="row mb-3">
-                        <label for="rentang_waktu" class="col-sm-4 col-form-label">Jangka Waktu Pinjaman</label>
-                        <div class="col-sm-10">
-                        <input type="number" id="rentang_waktu" name="rentang_waktu" style="width: 300px" class="form-control" required>
-                    </div>
+                        <label for="rentang_waktu" class="col-sm-4 col-form-label">Jangka Waktu per Bulan</label>
+                        <div class="col-sm-4">
+                            <input type="number" id="rentang_waktu" name="rentang_waktu" style="max-width: 150px;" class="form-control" required>
+                        </div>
                     </div>
 
                     <div class="col-sm-11 d-flex justify-content-center">
@@ -56,9 +47,16 @@
                 <br>
                 @if (session()->has('success'))
                 <div class="alert alert-success" role="alert">
-                    {{ session('success') }}
+                {{ session('success') }}
                 </div>
                 @endif
+
+                @if (session()->has('warning'))
+                <div class="alert alert-warning" role="alert">
+                {{ session('warning') }}
+                </div>
+                @endif
+
 
             </div>
         </div>

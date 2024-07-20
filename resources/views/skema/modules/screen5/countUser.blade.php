@@ -13,14 +13,15 @@
 
 <body>
     <nav class="navbar" style="background-color: #672968;">
-        <div class="container-fluid">
-            <span class="navbar-brand mb-0 h1, text-white">
+        <div class="container-fluid d-flex justify-content-between align-items-center">
+            <span class="navbar-brand mb-0 h1 text-white">
                 <h3 style="display: inline-block; margin-right: 10px;">Simulasi Kredit</h3>
-                <a class="navbar-brand text-white" href="/login" style="text-decoration: none;">Masuk</a>
-                <div style="flex-direction: right">
-                    <i class="bi bi-person-circle" style="font-size: 2rem;"></i>
-                </div>
             </span>
+            <div>
+                <a class="navbar-brand text-white" href="/login" style="text-decoration: none;">
+                    <i class="bi bi-person-circle text-white" style="font-size: 2rem;"></i>
+                </a>
+            </div>
         </div>
     </nav>
 
@@ -29,20 +30,26 @@
             <div class="col-md-8">
                 <div class="card" style="margin-top: 50px">
                     <div class="card-header fw-bold" style="background-color: #672968; text-align: center; color: white;">
-                        Daftar jangka waktu
+                        Lakukan Perhitungan
                     </div>
                     <div class="card-body text-center" style="margin: 100px">
 
-                        <form action="/calculate" method="POST">
+                        <form action="/calculateUser" method="POST">
                             @csrf
 
-                            <div class="row mb-3" style="margin-top: 5px">
+                            {{-- <div class="row mb-3" style="margin-top: 5px">
                                 <label for="pokokpinjaman" class="col-sm-4 col-form-label">Pokok Pinjaman</label>
                                 <div class="col-sm-4">
                                     <input type="number" class="form-control" name="pokokpinjaman" id="pokokpinjaman" style="max-width: 150px;" required>
                                     <div class="invalid-feedback">
                                         Harap masukkan pokok pinjaman.
                                     </div>
+                                </div>
+                            </div> --}}
+                            <div class="row mb-3" style="margin-top: 5px">
+                                <label for="pokokpinjaman" class="col-sm-4 col-form-label">Pokok Pinjaman</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" name="pokokpinjaman" id="pokokpinjaman" required style="max-width: 150px;">
                                 </div>
                             </div>
 
@@ -64,7 +71,7 @@
                             <div class="row mb-3" style="margin-top: 30px">
                                 <label for="hitungjumlahbunga" class="col-sm-4 col-form-label">Jumlah Bunga</label>
                                 <div class="col-sm-8">
-                                    <input type="text" id="hitungjumlahbunga" name="hitungjumlahbunga" class="form-control" required>
+                                    <input type="text" id="hitungjumlahbunga" name="hitungjumlahbunga" class="form-control" style="max-width: 150px;" readonly  required>
                                     <div class="invalid-feedback">
                                         Harap masukkan jumlah bunga.
                                     </div>
@@ -121,10 +128,19 @@
             })
             .catch(error => console.error('Error:', error));
 
-
     };
+
+//     function formatNumber(value) {
+//     return value.replace(/\D/g, "")
+//                 .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+// }
+
+//     document.getElementById('pokokpinjaman').addEventListener('input', function() {
+//     var value = this.value;
+//     this.value = formatNumber(value);});
     </script>
 
 </body>
 
 </html>
+
